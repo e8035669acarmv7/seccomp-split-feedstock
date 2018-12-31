@@ -10,7 +10,7 @@ source:
   sha256: 5a52495207f00d1254707f11226e17c16ec53f5038d65bbabf1892873fa2fe5b
 
 build:
-  number: 1000
+  number: 1001
   skip: True  # [not linux]
 
 requirements:
@@ -27,6 +27,11 @@ test:
 outputs:
   - name: libseccomp
     script: install_lib.sh
+    build:
+      run_exports:
+        # Has followed semver since 1.0.1 in 2012
+        # https://abi-laboratory.pro/index.php?view=timeline&l=libseccomp
+        - {{ pin_subpackage('libseccomp') }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -45,9 +50,11 @@ outputs:
         - cython
         - python
         - pip
-        - libseccomp
+        - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
         - python
+        # The python package statitically links to libseccomp
+        # so there is no need to add it here
     test:
       imports:
         - seccomp
