@@ -49,9 +49,11 @@ outputs:
         - cython
         - python
         - pip
-        - libseccomp
+        - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
         - python
+        # The python package statitically links to libseccomp
+        # so there is no need to add it here
     test:
       imports:
         - seccomp
