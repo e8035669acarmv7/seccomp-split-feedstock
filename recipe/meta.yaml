@@ -27,10 +27,11 @@ test:
 outputs:
   - name: libseccomp
     script: install_lib.sh
-    run_exports:
-      # Has followed semver since 1.0.1 in 2012
-      # https://abi-laboratory.pro/index.php?view=timeline&l=libseccomp
-      - {{ pin_subpackage('libseccomp') }}
+    build:
+      run_exports:
+        # Has followed semver since 1.0.1 in 2012
+        # https://abi-laboratory.pro/index.php?view=timeline&l=libseccomp
+        - {{ pin_subpackage('libseccomp') }}
     requirements:
       build:
         - {{ compiler('c') }}
