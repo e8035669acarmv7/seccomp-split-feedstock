@@ -35,6 +35,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - make  # [unix]
     test:
       commands:
         - test -f $PREFIX/lib/libseccomp.so
@@ -46,6 +47,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - sed
+        - make  # [unix]
       host:
         - cython
         - python
@@ -61,7 +63,7 @@ outputs:
 
 about:
   home: https://github.com/seccomp/libseccomp
-  license: LGPL
+  license: LGPL-2.1-only
   license_file: LICENSE
   summary: 'libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.'
 
