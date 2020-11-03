@@ -7,6 +7,8 @@ package:
 source:
   url: https://github.com/seccomp/libseccomp/releases/download/v{{ version }}/libseccomp-{{ version }}.tar.gz
   sha256: 4e79738d1ef3c9b7ca9769f1f8b8d84fc17143c2c1c432e53b9c64787e0ff3eb
+  patches:
+    - 0001-Dynamic-linking-for-Python-package.patch
 
 build:
   number: 0
@@ -19,10 +21,6 @@ requirements:
     - autoconf
     - libtool
     - make
-
-test:
-  commands:
-    - test -l ${PREFIX}/libseccomp.so
 
 outputs:
   - name: libseccomp
@@ -39,24 +37,21 @@ outputs:
     test:
       commands:
         - test -f $PREFIX/lib/libseccomp.so
-        - test -f $PREFIX/lib/libseccomp.a
+        - test ! -f $PREFIX/lib/libseccomp.a
 
   - name: seccomp
     script: install_python.sh
     requirements:
       build:
         - {{ compiler('c') }}
-        - sed
-        - make
       host:
         - cython
         - python
         - pip
         - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
+        - {{ pin_subpackage('libseccomp', exact=True) }}
         - python
-        # The python package statitically links to libseccomp
-        # so there is no need to add it here
     test:
       imports:
         - seccomp
@@ -78,4 +73,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - mbargull
     - sodre
