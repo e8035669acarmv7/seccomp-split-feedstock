@@ -1,5 +1,6 @@
-./autogen.sh
+autoreconf -fi
 ./configure \
-  --prefix=$PREFIX \
+  --prefix="${PREFIX}" \
+  --enable-static=no
 
 make

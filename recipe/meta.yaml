@@ -1,16 +1,17 @@
-{% set name = "seccomp-split" %}
-{% set version = "2.4.1" %}
+{% set version = "2.4.4" %}
 
 package:
-  name: {{ name|lower }}
+  name: seccomp-split
   version: {{ version }}
 
 source:
-  url: https://github.com/seccomp/libseccomp/archive/v{{ version }}.tar.gz
-  sha256: 36aa502c0461ae9efc6c93ec2430d6badd9bf91ecbe73806baf7b7c6f687ab4f
+  url: https://github.com/seccomp/libseccomp/releases/download/v{{ version }}/libseccomp-{{ version }}.tar.gz
+  sha256: 4e79738d1ef3c9b7ca9769f1f8b8d84fc17143c2c1c432e53b9c64787e0ff3eb
+  patches:
+    - 0001-Dynamic-linking-for-Python-package.patch
 
 build:
-  number: 2
+  number: 0
   skip: True  # [not linux]
 
 requirements:
@@ -19,11 +20,7 @@ requirements:
     - automake
     - autoconf
     - libtool
-    - make  # [unix]
-
-test:
-  commands:
-    - test -l ${PREFIX}/libseccomp.so
+    - make
 
 outputs:
   - name: libseccomp
@@ -36,28 +33,25 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-        - make  # [unix]
+        - make
     test:
       commands:
         - test -f $PREFIX/lib/libseccomp.so
-        - test -f $PREFIX/lib/libseccomp.a
+        - test ! -f $PREFIX/lib/libseccomp.a
 
   - name: seccomp
     script: install_python.sh
     requirements:
       build:
         - {{ compiler('c') }}
-        - sed
-        - make  # [unix]
       host:
         - cython
         - python
         - pip
         - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
+        - {{ pin_subpackage('libseccomp', exact=True) }}
         - python
-        # The python package statitically links to libseccomp
-        # so there is no need to add it here
     test:
       imports:
         - seccomp
@@ -79,4 +73,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - mbargull
     - sodre
