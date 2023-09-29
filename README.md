@@ -1,11 +1,53 @@
+About seccomp-split-feedstock
+=============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/seccomp-split-feedstock/blob/main/LICENSE.txt)
+
+
 About seccomp-split
-===================
+-------------------
 
 Home: https://github.com/seccomp/libseccomp
 
 Package license: LGPL-2.1-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/seccomp-split-feedstock/blob/main/LICENSE.txt)
+Summary: libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.
+
+Development: https://github.com/seccomp/libseccomp
+
+The libseccomp library provides an easy to use, platform independent, 
+interface to the Linux Kernel's syscall filtering mechanism. The 
+libseccomp API is designed to abstract away the underlying BPF based 
+syscall filter language and present a more conventional function-call
+based filtering interface that should be familiar to, and easily 
+adopted by, application developers.
+
+
+About libseccomp
+----------------
+
+Home: https://github.com/seccomp/libseccomp
+
+Package license: LGPL-2.1-only
+
+Summary: libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.
+
+Development: https://github.com/seccomp/libseccomp
+
+The libseccomp library provides an easy to use, platform independent,
+interface to the Linux Kernel's syscall filtering mechanism. The
+libseccomp API is designed to abstract away the underlying BPF based
+syscall filter language and present a more conventional function-call
+based filtering interface that should be familiar to, and easily
+adopted by, application developers.
+
+
+About seccomp
+-------------
+
+Home: https://github.com/seccomp/libseccomp
+
+Package license: LGPL-2.1-only
 
 Summary: libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.
 
@@ -47,21 +89,21 @@ Current build status
               <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4765&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4765&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4765&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/seccomp-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr>
